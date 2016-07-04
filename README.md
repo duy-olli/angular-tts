@@ -15,7 +15,7 @@ Or you can install by this repo (not recommended)
 
 ```bash
 # from the terminal at the root of your project
-bower install ducminhquan/openfpt-ng-tts --save
+bower install fpt-corp/angular-tts --save
 ```
     
 
