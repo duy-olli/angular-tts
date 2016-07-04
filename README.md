@@ -1,50 +1,63 @@
-# AngularJS service for Vietnamese TTS (Text-to-speech) of OpenFPT
+# openfpt-ng-tts
 
-[TODO - brief summary]
+An AngularJS service to speak the text via the OpenFPT TTS (text-to-speech) API. 
 
-## Demo
-http://fpt.github.io/angular-tts/
+## Installation
 
-## Dependencies
-- required:
-	[TODO]
-- optional
-	[TODO]
+### Install through bower:
 
-See `bower.json` and `index.html` in the `gh-pages` branch for a full list / more details
+```bash
+# from the terminal at the root of your project
+bower install openfpt-ng-tts --save
+```
 
-## Install
-1. download the files
-	1. Bower
-		1. add `"angular-tts": "latest"` to your `bower.json` file then run `bower install` OR run `bower install angular-tts`
-2. include the files in your app
-	1. `tts.min.js`
-3. include the module in angular (i.e. in `app.js`) - `fpt.angular-tts`
+Or you can install by this repo (not recommended)
 
-See the `gh-pages` branch, files `bower.json` and `index.html` for a full example.
+```bash
+# from the terminal at the root of your project
+bower install fpt-corp/angular-tts --save
+```
+    
+
+### Add to your module deps
+```javascript
+angular.module('xxx', ['fpt.angular-tts']);
+```
+
+## Use
+
+### Get the API Key
+
+Go to [Open FPT API Developer Portal](http://dev.openfpt.vn/) to get your API Key
+
+### Create a HTML Audio players on HTML file
+```html
+    <audio id="openfpt-tts"> </audio>
+``` 
+
+### Inject the service
+
+Add openfptTts as injection to use in angular controller
+
+```javascript
+angular.module('myApp').controller('HomeCtrl', ['$scope', 'openfptTts', function ($scope, openfptTts) {
+    // Your code goes here   
+}];
+```
+
+### Global config
+
+```javascript
+openfptTts.apiKey = 'YOUR_API_GOES_HERE';
+openfptTts.elementId = 'openfpt-tts'; //default is 'openfpt-tts'
+openfptTts.voice = 'both'; //default is 'both'
+```
+
+- `voice` options can be `male | female | both`. When voice is set to `both`, the engine will speak with **male** voice and **female** voice sequentially.
 
 
-## Documentation
-See the `tts.js` file top comments for usage examples and documentation
-https://github.com/fpt/angular-tts/blob/master/tts.js
+### Method
 
-
-## Development
-
-1. `git checkout gh-pages`
-	1. run `npm install && bower install`
-	2. write your code then run `grunt`
-	3. git commit your changes
-2. copy over core files (.js and .css/.less for directives) to master branch
-	1. `git checkout master`
-	2. `git checkout gh-pages tts.js tts.min.js tts.less tts.css tts.min.css`
-3. update README, CHANGELOG, bower.json, and do any other final polishing to prepare for publishing
-	1. git commit changes
-	2. git tag with the version number, i.e. `git tag v1.0.0`
-4. create github repo and push
-	1. [if remote does not already exist or is incorrect] `git remote add origin [github url]`
-	2. `git push origin master --tags` (want to push master branch first so it is the default on github)
-	3. `git checkout gh-pages`
-	4. `git push origin gh-pages`
-5. (optional) register bower component
-	1. `bower register angular-tts [git repo url]`
+#### `openfptTts.speak(text, options, cb)`: Speak a singleline of text.
+- text `string`: Text you want to speak.
+- cb `nodejs callback`
