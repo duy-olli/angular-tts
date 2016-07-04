@@ -1,6 +1,6 @@
 {
 	"name": "openfpt-ng-tts",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"authors": [
 		"Quan Nguyen <ducminhquan@gmail.com>"
 	],
@@ -24,6 +24,7 @@
 	"dependencies": {
 		"angular":"^1.5.0"
 	},
+	"main" : "./tts.min.js",
 	"devDependencies": {
 	}
 }
