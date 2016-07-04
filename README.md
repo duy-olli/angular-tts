@@ -60,4 +60,9 @@ openfptTts.voice = 'both'; //default is 'both'
 
 #### `openfptTts.speak(text, options, cb)`: Speak a singleline of text.
 - text `string`: Text you want to speak.
-- cb `nodejs callback`
+- cb `nodejs callback` cb(err)
+
+#### `openfptTts.speakArray(textArray, options, cb)`: Speak a singleline of text.
+- textArray `array[string]`: Text you want to speak.
+- cb `nodejs callback` cb(err)
+
