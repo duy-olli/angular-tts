@@ -1,3 +1,8 @@
-<div ng-controller='HomeCtrl'>	
-	<!-- TODO: place directive call here -->
+<div ng-controller="HomeCtrl">
+	API KEY: <input width="500" type="text" placeholder="Go to dev.openfpt.vn to get API Key" data-ng-model="apiKey" />
+	<br /> API KEY: <textarea width="500" rows="5" type="text" placeholder="Add text you want the engine speak" data-ng-model="texts"> </textarea>
+	<br />
+	<br />
+	<button data-ng-click="speak();">Speak </button>
+	<audio id="openfpt-tts"></audio>
 </div>
