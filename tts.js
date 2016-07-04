@@ -9,8 +9,10 @@
 
 angular.module('fpt.angular-tts', []).factory('openfptTts', ['$http', '$timeout', function ($http, $timeout) {
 	var self = {};
+	var rootUrl = 'http://api.openfpt.vn/text2speech/?api_key=';
 
 	var count = 0;
+
 
 	//private methods and properties - should ONLY expose methods and properties publicly (via the 'return' object) that are supposed to be used; everything else (helper methods that aren't supposed to be called externally) should be private.
 
@@ -56,22 +58,18 @@ angular.module('fpt.angular-tts', []).factory('openfptTts', ['$http', '$timeout'
 		var voice = self.voice;
 		var play = function (text, cb) {
 			var options = {
-				'method': 'POST',
-				'url': 'http://api.openfpt.vn/text2speech/?api_key=' + self.apiKey,
-				'headers': {
+				method: 'POST',
+				url: rootUrl + self.apiKey,
+				skipAuthorization: true,
+				headers: {
 					'content-type': 'application/json',
-					'voice': (voice === 'both') ? (count++ % 2) ? 'male' : 'female' : voice
+					voice: (voice === 'both') ? (count++ % 2) ? 'male' : 'female' : voice
 				},
 				data: JSON.stringify(text)
 			};
 
 			$http(options).then(function (res) {
 				var data = res.data;
-
-				// audioElement.addEventListener('canplay', function () {
-				// 	console.log('Can play');
-
-				// });
 
 				playTrack(data.async, cb);
 
@@ -103,8 +101,8 @@ angular.module('fpt.angular-tts', []).factory('openfptTts', ['$http', '$timeout'
 
 	//public methods & properties
 	self = {
-		speech: speak,
-		speechArray: speakArray,
+		speak: speak,
+		speakArray: speakArray,
 		elementId: 'openfpt-tts',
 		apiKey: '',
 		voice: 'both'
