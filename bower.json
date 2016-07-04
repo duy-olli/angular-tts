@@ -1,6 +1,6 @@
 {
-	"name": "angular-tts",
-	"version": "1.0.0",
+	"name": "openfpt-ng-tts",
+	"version": "0.0.2",
 	"authors": [
 		"Quan Nguyen <ducminhquan@gmail.com>"
 	],
@@ -22,7 +22,7 @@
 		"tests"
 	],
 	"dependencies": {
-		"angular":"~1.2.0"
+		"angular":"^1.5.0"
 	},
 	"devDependencies": {
 	}
