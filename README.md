@@ -62,7 +62,7 @@ openfptTts.voice = 'both'; //default is 'both'
 - text `string`: Text you want to speak.
 - cb `nodejs callback` cb(err)
 
-#### `openfptTts.speakArray(textArray, options, cb)`: Speak a singleline of text.
+#### `openfptTts.speakArray(textArray, options, cb)`: Speak sequentially.
 - textArray `array[string]`: Text you want to speak.
 - cb `nodejs callback` cb(err)
 
