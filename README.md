@@ -51,10 +51,18 @@ angular.module('myApp').controller('HomeCtrl', ['$scope', 'openfptTts', function
 openfptTts.apiKey = 'YOUR_API_GOES_HERE';
 openfptTts.elementId = 'openfpt-tts'; //default is 'openfpt-tts'
 openfptTts.voice = 'both'; //default is 'both'
+openfptTts.speed = 0; //default is 0
 ```
 
-- `voice` options can be `male | female | both`. When voice is set to `both`, the engine will speak with **male** voice and **female** voice sequentially.
-
+- `voice` option can be `male | female | both`. When voice is set to `both`, the engine will speak with **male** voice and **female** voice sequentially.
+- `speed` option can be:
+   - `-3` : extreme slow
+   - `-2` : very slow 
+   - `-1` : slow 
+   - ` 0` : normal (default) 
+   - ` 1` : fast  
+   - ` 2` : very fast 
+   - ` 3` : extreme fast 
 
 ### Method
 

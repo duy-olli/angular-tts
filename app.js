@@ -19,8 +19,8 @@ config(['$routeProvider', '$locationProvider', '$compileProvider', function($rou
 	// var staticPath ='/';
 	var staticPath;
 	// staticPath ='/angular-services/angular-tts/';		//local
-	// staticPath ='/';		//nodejs (local)
-	staticPath ='/angular-tts/';		//gh-pages
+	staticPath ='/';		//nodejs (local)
+	// staticPath ='/angular-tts/';		//gh-pages
 	var appPathRoute ='/';
 	var pagesPath =staticPath+'pages/';
 	

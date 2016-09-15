@@ -9,7 +9,7 @@
 
 angular.module('fpt.angular-tts', []).factory('openfptTts', ['$http', '$timeout', function ($http, $timeout) {
 	var self = {};
-	var rootUrl = 'http://api.openfpt.vn/text2speech/?api_key=';
+	var rootUrl = 'http://api.openfpt.vn/text2speech.v36';
 
 	var count = 0;
 
@@ -25,14 +25,14 @@ angular.module('fpt.angular-tts', []).factory('openfptTts', ['$http', '$timeout'
 
 	var playTrack = function (url, cb) {
 		var canplay = function () {
-			console.log('Can play');
+			// console.log('Can play');
 			audioElement.removeEventListener('canplay', canplay, false);
 			audioElement.addEventListener('ended', callback, false);
 			audioElement.play();
 		};
 
 		var onError = function () {
-			console.log('Retry');
+			// console.log('Retry');
 
 			$timeout(function () {
 				loadTrack(url);
@@ -56,14 +56,28 @@ angular.module('fpt.angular-tts', []).factory('openfptTts', ['$http', '$timeout'
 
 	var speakArray = function (texts, speechOptions, callback) {
 		var voice = self.voice;
+		var speed = self.speed;
+
 		var play = function (text, cb) {
+			var tmpOptions = {
+				voice: 'both',
+				speed: 0
+			};
+
+			if (speechOptions) {
+				tmpOptions.voice = speechOptions.voice || tmpOptions.voice;
+				tmpOptions.voice = speechOptions.speed || tmpOptions.speed;
+			}
+
 			var options = {
 				method: 'POST',
-				url: rootUrl + self.apiKey,
+				url: rootUrl,
 				skipAuthorization: true,
 				headers: {
 					'content-type': 'application/json',
-					voice: (voice === 'both') ? (count++ % 2) ? 'male' : 'female' : voice
+					voice: (voice === 'both') ? (count++ % 2) ? 'male' : 'female' : voice,
+					speed: speed,
+					api_key: self.apiKey
 				},
 				data: JSON.stringify(text)
 			};
@@ -105,7 +119,8 @@ angular.module('fpt.angular-tts', []).factory('openfptTts', ['$http', '$timeout'
 		speakArray: speakArray,
 		elementId: 'openfpt-tts',
 		apiKey: '',
-		voice: 'both'
+		voice: 'both',
+		speed: 0
 	};
 
 	return self;
