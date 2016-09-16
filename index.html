@@ -1,24 +1,131 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
-<head>
-    <meta charset="utf-8">
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Angular-tts by fpt-corp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Angular-tts</h1>
+      <h2 class="project-tagline">An AngularJS service to speak the text via the OpenFPT TTS (text-to-speech) API.</h2>
+      <a href="https://github.com/fpt-corp/angular-tts" class="btn">View on GitHub</a>
+      <a href="https://github.com/fpt-corp/angular-tts/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/fpt-corp/angular-tts/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <title>angular-tts</title>
+    <section class="main-content">
+      <h1>
+<a id="openfpt-ng-tts" class="anchor" href="#openfpt-ng-tts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>openfpt-ng-tts</h1>
 
-</head>
-<body>
-	<div ng-view></div>
+<p>An AngularJS service to speak the text via the OpenFPT TTS (text-to-speech) API. </p>
 
-	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-	<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
-	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-	<script type="text/javascript" src="bower_components/angular-touch/angular-touch.min.js"></script>
-	
-	<script type="text/javascript" src="tts.js"></script>
-	<!--<script type="text/javascript" src="tts.min.js"></script>-->
-	
-	<script type="text/javascript" src="app.js"></script>
-	
-	<script type="text/javascript" src="pages/home/HomeCtrl.js"></script>
-</body>
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a id="install-through-bower" class="anchor" href="#install-through-bower" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install through bower:</h3>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># from the terminal at the root of your project</span>
+bower install openfpt-ng-tts --save</pre></div>
+
+<p>Or you can install by this repo (not recommended)</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># from the terminal at the root of your project</span>
+bower install fpt-corp/angular-tts --save</pre></div>
+
+<h3>
+<a id="add-to-your-module-deps" class="anchor" href="#add-to-your-module-deps" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add to your module deps</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">angular</span>.<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>xxx<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>fpt.angular-tts<span class="pl-pds">'</span></span>]);</pre></div>
+
+<h2>
+<a id="use" class="anchor" href="#use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use</h2>
+
+<h3>
+<a id="get-the-api-key" class="anchor" href="#get-the-api-key" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get the API Key</h3>
+
+<p>Go to <a href="http://dev.openfpt.vn/">Open FPT API Developer Portal</a> to get your API Key</p>
+
+<h3>
+<a id="create-a-html-audio-players-on-html-file" class="anchor" href="#create-a-html-audio-players-on-html-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create a HTML Audio players on HTML file</h3>
+
+<div class="highlight highlight-text-html-basic"><pre>    &lt;<span class="pl-ent">audio</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>openfpt-tts<span class="pl-pds">"</span></span>&gt; &lt;/<span class="pl-ent">audio</span>&gt;</pre></div>
+
+<h3>
+<a id="inject-the-service" class="anchor" href="#inject-the-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Inject the service</h3>
+
+<p>Add openfptTts as injection to use in angular controller</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">angular</span>.<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>myApp<span class="pl-pds">'</span></span>).<span class="pl-en">controller</span>(<span class="pl-s"><span class="pl-pds">'</span>HomeCtrl<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>$scope<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>openfptTts<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">$scope</span>, <span class="pl-smi">openfptTts</span>) {
+    <span class="pl-c">// Your code goes here   </span>
+}];</pre></div>
+
+<h3>
+<a id="global-config" class="anchor" href="#global-config" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Global config</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">openfptTts</span>.<span class="pl-smi">apiKey</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>YOUR_API_GOES_HERE<span class="pl-pds">'</span></span>;
+<span class="pl-smi">openfptTts</span>.<span class="pl-smi">elementId</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>openfpt-tts<span class="pl-pds">'</span></span>; <span class="pl-c">//default is 'openfpt-tts'</span>
+<span class="pl-smi">openfptTts</span>.<span class="pl-smi">voice</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>both<span class="pl-pds">'</span></span>; <span class="pl-c">//default is 'both'</span>
+<span class="pl-smi">openfptTts</span>.<span class="pl-smi">speed</span> <span class="pl-k">=</span> <span class="pl-c1">0</span>; <span class="pl-c">//default is 0</span></pre></div>
+
+<ul>
+<li>
+<code>voice</code> option can be <code>male | female | both</code>. When voice is set to <code>both</code>, the engine will speak with <strong>male</strong> voice and <strong>female</strong> voice sequentially.</li>
+<li>
+<code>speed</code> option can be:
+
+<ul>
+<li>
+<code>-3</code> : extreme slow</li>
+<li>
+<code>-2</code> : very slow </li>
+<li>
+<code>-1</code> : slow </li>
+<li>
+<code>0</code> : normal (default) </li>
+<li>
+<code>1</code> : fast<br>
+</li>
+<li>
+<code>2</code> : very fast </li>
+<li>
+<code>3</code> : extreme fast </li>
+</ul>
+</li>
+</ul>
+
+<h3>
+<a id="method" class="anchor" href="#method" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Method</h3>
+
+<h4>
+<a id="openfptttsspeaktext-options-cb-speak-a-singleline-of-text" class="anchor" href="#openfptttsspeaktext-options-cb-speak-a-singleline-of-text" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>openfptTts.speak(text, options, cb)</code>: Speak a singleline of text.</h4>
+
+<ul>
+<li>text <code>string</code>: Text you want to speak.</li>
+<li>cb <code>nodejs callback</code> cb(err)</li>
+</ul>
+
+<h4>
+<a id="openfptttsspeakarraytextarray-options-cb-speak-sequentially" class="anchor" href="#openfptttsspeakarraytextarray-options-cb-speak-sequentially" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>openfptTts.speakArray(textArray, options, cb)</code>: Speak sequentially.</h4>
+
+<ul>
+<li>textArray <code>array[string]</code>: Text you want to speak.</li>
+<li>cb <code>nodejs callback</code> cb(err)</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/fpt-corp/angular-tts">Angular-tts</a> is maintained by <a href="https://github.com/fpt-corp">fpt-corp</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
 </html>
