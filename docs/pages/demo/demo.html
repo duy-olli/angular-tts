@@ -1,0 +1,55 @@
+<section class="page-header">
+	<h1 class="project-name">OpenFPT Angular TTS</h1>
+	<h2 class="project-tagline">An AngularJS service to speak the text via the OpenFPT TTS (text-to-speech) API.</h2>
+	<a href="https://github.com/fpt-corp/angular-tts" class="btn">View on GitHub</a>
+</section>
+
+<section class="main-content">
+
+	<div ng-controller="DemoCtrl">
+
+		<form>
+			<!--<div class="form-group">
+				<label>API Key</label>
+				<input width="500" class="form-control" type="text" placeholder="Go to dev.openfpt.vn to get API Key" data-ng-model="apiKey">
+			</div>-->
+
+			<div class="form-group">
+				<label>Text</label>
+				<textarea width="500" class="form-control" rows="5" type="text" data-ng-model="texts"> </textarea>
+			</div>
+
+			<div class="form-group">
+				<label>Voice</label>
+				<div class="dropdown">
+					<div class="btn-group btn-group-justified">
+						<label class="btn btn-info" ng-model="voice" uib-btn-radio="'male'">Male</label>
+						<label class="btn btn-info" ng-model="voice" uib-btn-radio="'female'">Female</label>
+						<label class="btn btn-info" ng-model="voice" uib-btn-radio="'both'">Both</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label>Speed</label>
+				<div class="dropdown">
+					<div class="btn-group btn-group-justified">
+						<label class="btn btn-success" ng-model="speed" uib-btn-radio="-3">Extreme Slow</label>
+						<label class="btn btn-success" ng-model="speed" uib-btn-radio="-2">Very Slow</label>
+						<label class="btn btn-success" ng-model="speed" uib-btn-radio="-1">Slow</label>
+						<label class="btn btn-success" ng-model="speed" uib-btn-radio="0">Normal</label>
+						<label class="btn btn-success" ng-model="speed" uib-btn-radio="1">Fast</label>
+						<label class="btn btn-success" ng-model="speed" uib-btn-radio="2">Very Fast</label>
+						<label class="btn btn-success" ng-model="speed" uib-btn-radio="3">Extreme Fast</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<button data-ng-click="speak();" type="button" class="btn btn-primary btn-lg btn-block">Speak</button>
+			</div>
+		</form>
+
+		<audio id="openfpt-tts"></audio>
+	</div>
+
+</section>
